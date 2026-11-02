@@ -6613,7 +6613,7 @@ function KbIndex($$anchor, $$props) {
         "layout": "runbook",
         "title": "#4471 review \xB7 separate causes behind the date reports",
         "owner": "hello2kamal and Codex",
-        "status": "investigation",
+        "status": "closed per engineering update",
         "reviewed": "2026-11-02",
         "signature": "hello2kamal + Codex | S01E03 | 2026-11-02"
       }
@@ -13225,7 +13225,7 @@ var metadata4 = {
   "layout": "runbook",
   "title": "#4471 review \xB7 separate causes behind the date reports",
   "owner": "hello2kamal and Codex",
-  "status": "investigation",
+  "status": "closed per engineering update",
   "reviewed": "2026-11-02",
   "signature": "hello2kamal + Codex | S01E03 | 2026-11-02"
 };
@@ -13233,7 +13233,9 @@ var { layout: layout4, title: title4, owner: owner4, status: status4, reviewed: 
 var root11 = from_html(
   `<p>This review checks the <a href="/kb/incidents/4471">original incident</a> against the supplied export,
 dated 2026-10-04. It is a snapshot investigation, not a live queue count or an implemented fix.
-The counts below come from components running the supplied code and tenant directory.</p> <h2>One merged ticket conceals different causes</h2> <!> <p><strong>Parser:</strong> the shared parser reads month first although the tenant writes day first.
+The counts below come from components running the supplied code and tenant directory.</p> <h2>Engineering outcome \xB7 5 October 2026</h2> <p>After the course accepted the two tickets, its <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">Challenge page</a> published a new engineering update: #4471 closed on 5 October.</p> <ul><li><a href="https://github.com/hello2kamal/mega-s01e03-what-it-shows/issues/1" rel="nofollow">Parser ticket #1</a>: <strong>fixed</strong>, <code>fix(dates): parse dd/mm for eu locales</code>. Close as completed.</li> <li><a href="https://github.com/hello2kamal/mega-s01e03-what-it-shows/issues/2" rel="nofollow">Hint ticket #2</a>: <strong>won\u2019t fix</strong>,
+because the booking-v3 form was retired. Close as not planned; retirement is not a parser fix.</li></ul> <p>This status comes from the course\u2019s engineering update, not a production test performed here.
+The older export and computed counts below remain evidence of the original reports.</p> <h2>One merged ticket conceals different causes</h2> <!> <p><strong>Parser:</strong> the shared parser reads month first although the tenant writes day first.
 Harbour Dental\u2019s R-41200 describes 7 April becoming 4 July. R-41201 corrects the opposite
 direction in a separate report. Day-first app/email reports and booking-v2 form reports
 are assigned to this group by the supplied classifier.</p> <p><strong>Form hint:</strong> booking-v3 prints MM/DD/YYYY but interprets input in the tenant\u2019s day-first
@@ -13247,9 +13249,10 @@ Their review date is old enough to trigger the layout\u2019s staleness warning. 
 to check evidence, not automatic proof that a rule is invalid.</p> <p>The executable examples compare actual causes, with tenant locale, form and channel.
 Matching subjects can hide different causes; different subjects can describe the same cause.
 Unknown tenants cannot be safely assigned a cause. Browser-locale intake tags can disagree
-with the tenant-based classification. Export pagination overlaps, so deduplicate by report ID.</p> <!> <h2>Proposed next steps</h2> <ul><li>Keep separate engineering tickets for the parser problem and the booking-v3 hint problem.</li> <li>Carry the report IDs and export date with each count; recheck counts against fresh data.</li> <li>Investigate the five anomalous reports before claiming a complete causal explanation.</li> <li>Propose a new decision record for cause-based deduplication. Preserve accepted decision
+with the tenant-based classification. Export pagination overlaps, so deduplicate by report ID.</p> <!> <h2>Follow-up and retained uncertainty</h2> <ul><li>Retain separate engineering tickets for the parser problem and the booking-v3 hint problem,
+with the distinct closure outcomes above.</li> <li>Carry the report IDs and export date with each count; recheck counts against fresh data.</li> <li>Investigate the five anomalous reports before claiming a complete causal explanation.</li> <li>Propose a new decision record for cause-based deduplication. Preserve accepted decision
 0001 unchanged and obtain approval before declaring a replacement policy accepted.</li> <li>Reconcile the incident narrative and triage guidance with the reviewed decision and code.</li></ul> <p>Sources: <code>src/lib/data/reports-4471.json</code>, <code>desk-notes.json</code>, tenant JSON, <code>src/lib/kb/causes.ts</code>, <code>locales.ts</code>, <code>dedupe-cases.ts</code>, <code>staleness.ts</code>, and the linked pages.
-No application fix or policy approval is claimed by this review.</p> <!>`,
+No independent production-fix verification or replacement-policy approval is claimed by this review.</p> <!>`,
   1
 );
 function _page_svx4($$anchor, $$props) {
@@ -13257,7 +13260,7 @@ function _page_svx4($$anchor, $$props) {
   Runbook($$anchor, spread_props(() => $$sanitized_props, () => metadata4, {
     children: ($$anchor2, $$slotProps) => {
       var fragment_1 = root11();
-      var node = sibling(first_child(fragment_1), 4);
+      var node = sibling(first_child(fragment_1), 12);
       CauseTable(node, { ticket: 4471 });
       var node_1 = sibling(node, 6);
       Callout(node_1, {

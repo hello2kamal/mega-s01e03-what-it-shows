@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 review · separate causes behind the date reports'
 owner: hello2kamal and Codex
-status: investigation
+status: closed per engineering update
 reviewed: '2026-11-02'
 signature: 'hello2kamal + Codex | S01E03 | 2026-11-02'
 ---
@@ -18,6 +18,19 @@ signature: 'hello2kamal + Codex | S01E03 | 2026-11-02'
 This review checks the [original incident](/kb/incidents/4471) against the supplied export,
 dated 2026-10-04. It is a snapshot investigation, not a live queue count or an implemented fix.
 The counts below come from components running the supplied code and tenant directory.
+
+## Engineering outcome · 5 October 2026
+
+After the course accepted the two tickets, its [Challenge page](https://hq.mega.dev/challenges/what-it-shows)
+published a new engineering update: #4471 closed on 5 October.
+
+- [Parser ticket #1](https://github.com/hello2kamal/mega-s01e03-what-it-shows/issues/1): **fixed**,
+  `fix(dates): parse dd/mm for eu locales`. Close as completed.
+- [Hint ticket #2](https://github.com/hello2kamal/mega-s01e03-what-it-shows/issues/2): **won't fix**,
+  because the booking-v3 form was retired. Close as not planned; retirement is not a parser fix.
+
+This status comes from the course's engineering update, not a production test performed here.
+The older export and computed counts below remain evidence of the original reports.
 
 ## One merged ticket conceals different causes
 
@@ -63,9 +76,10 @@ with the tenant-based classification. Export pagination overlaps, so deduplicate
 
 <DedupeExplorer />
 
-## Proposed next steps
+## Follow-up and retained uncertainty
 
-- Keep separate engineering tickets for the parser problem and the booking-v3 hint problem.
+- Retain separate engineering tickets for the parser problem and the booking-v3 hint problem,
+  with the distinct closure outcomes above.
 - Carry the report IDs and export date with each count; recheck counts against fresh data.
 - Investigate the five anomalous reports before claiming a complete causal explanation.
 - Propose a new decision record for cause-based deduplication. Preserve accepted decision
@@ -74,6 +88,6 @@ with the tenant-based classification. Export pagination overlaps, so deduplicate
 
 Sources: `src/lib/data/reports-4471.json`, `desk-notes.json`, tenant JSON,
 `src/lib/kb/causes.ts`, `locales.ts`, `dedupe-cases.ts`, `staleness.ts`, and the linked pages.
-No application fix or policy approval is claimed by this review.
+No independent production-fix verification or replacement-policy approval is claimed by this review.
 
 <RenderStamp {signature} />

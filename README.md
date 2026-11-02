@@ -21,3 +21,7 @@ Use Node 24+ and pnpm. Run `pnpm install --frozen-lockfile`, `pnpm analyze`, and
 The investigation does not modify application behavior or declare a replacement support policy approved. Accepted decision 0001 is preserved. Report received time and ticket merge time are different events.
 
 AI assistance: Codex generated the analysis, issue drafts, build wrapper, and review page with student steering. The fictional source data and existing KB components are supplied by the MEGA.dev course. No company source code or training conversation is included.
+
+## Course engineering update
+
+After the course accepted the tickets, its Challenge page reported #4471 closed on 5 October: parser fixed; booking-v3 form retired, so the hint issue is not planned. The signed review preserves this distinction and the original export counts. This is course-reported status, not an independently tested production fix.
