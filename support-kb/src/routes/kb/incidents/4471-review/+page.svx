@@ -1,0 +1,79 @@
+---
+layout: runbook
+title: '#4471 review · separate causes behind the date reports'
+owner: hello2kamal and Codex
+status: investigation
+reviewed: '2026-11-02'
+signature: 'hello2kamal + Codex | S01E03 | 2026-11-02'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+This review checks the [original incident](/kb/incidents/4471) against the supplied export,
+dated 2026-10-04. It is a snapshot investigation, not a live queue count or an implemented fix.
+The counts below come from components running the supplied code and tenant directory.
+
+## One merged ticket conceals different causes
+
+<CauseTable ticket={4471} />
+
+**Parser:** the shared parser reads month first although the tenant writes day first.
+Harbour Dental's R-41200 describes 7 April becoming 4 July. R-41201 corrects the opposite
+direction in a separate report. Day-first app/email reports and booking-v2 form reports
+are assigned to this group by the supplied classifier.
+
+**Form hint:** booking-v3 prints MM/DD/YYYY but interprets input in the tenant's day-first
+convention. People following that hint can enter a different date than the form reads.
+The relevant form reports are from Alder Physio, Copper Studio and Pale Harbour.
+R-41230, R-41241 and R-41251 are examples. Fixing the shared parser is not evidence that
+this separate hint mismatch is resolved.
+
+<Callout kind="warn">
+The classifier's groups are not a complete root-cause diagnosis of every report.
+The five one-day-move notes remain counted where the supplied code files them.
+Their descriptions, including R-41344's Lisbon/Toronto difference, need separate
+investigation. They do not establish a timezone defect or justify a second count.
+</Callout>
+
+## Read the timeline correctly
+
+<QueueTimeline ticket={4471} />
+
+Reports received and reports merged are different events. The backlog begins in April;
+merging into this ticket begins in July. A merge spike is not evidence of a new failure
+starting that week. The chart displays weekly buckets and retains both series.
+
+## Why the existing triage text needs review
+
+The [triage page](/kb/triage/dedupe) and
+[accepted decision 0001](/kb/decisions/0001-dedupe-by-subject) describe merging on subject.
+Their review date is old enough to trigger the layout's staleness warning. Age is a reason
+to check evidence, not automatic proof that a rule is invalid.
+
+The executable examples compare actual causes, with tenant locale, form and channel.
+Matching subjects can hide different causes; different subjects can describe the same cause.
+Unknown tenants cannot be safely assigned a cause. Browser-locale intake tags can disagree
+with the tenant-based classification. Export pagination overlaps, so deduplicate by report ID.
+
+<DedupeExplorer />
+
+## Proposed next steps
+
+- Keep separate engineering tickets for the parser problem and the booking-v3 hint problem.
+- Carry the report IDs and export date with each count; recheck counts against fresh data.
+- Investigate the five anomalous reports before claiming a complete causal explanation.
+- Propose a new decision record for cause-based deduplication. Preserve accepted decision
+  0001 unchanged and obtain approval before declaring a replacement policy accepted.
+- Reconcile the incident narrative and triage guidance with the reviewed decision and code.
+
+Sources: `src/lib/data/reports-4471.json`, `desk-notes.json`, tenant JSON,
+`src/lib/kb/causes.ts`, `locales.ts`, `dedupe-cases.ts`, `staleness.ts`, and the linked pages.
+No application fix or policy approval is claimed by this review.
+
+<RenderStamp {signature} />

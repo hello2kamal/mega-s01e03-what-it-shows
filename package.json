@@ -1,0 +1,14 @@
+{
+  "name": "mega-s01e03-what-it-shows",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "analyze": "node analyze.mjs",
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "mdsvex": "^0.12.8",
+    "svelte": "^5.57.3"
+  }
+}
