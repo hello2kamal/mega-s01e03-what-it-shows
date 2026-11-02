@@ -6615,7 +6615,7 @@ function KbIndex($$anchor, $$props) {
         "owner": "hello2kamal and Codex",
         "status": "closed per engineering update",
         "reviewed": "2026-11-02",
-        "signature": "hello2kamal + Codex | S01E03 | 2026-11-02"
+        "signature": "v1.eyJzdWIiOiIyNjM0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2NjMwNjksImV4cCI6MTc5Mzc0OTQ2OX0.nMSOaNWc0Epv1P_syFBuFCK3yMD-hjYTjJpoQlZooXk"
       }
     },
     "/src/routes/kb/triage/dedupe/+page.svx": {
@@ -13227,7 +13227,7 @@ var metadata4 = {
   "owner": "hello2kamal and Codex",
   "status": "closed per engineering update",
   "reviewed": "2026-11-02",
-  "signature": "hello2kamal + Codex | S01E03 | 2026-11-02"
+  "signature": "v1.eyJzdWIiOiIyNjM0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2NjMwNjksImV4cCI6MTc5Mzc0OTQ2OX0.nMSOaNWc0Epv1P_syFBuFCK3yMD-hjYTjJpoQlZooXk"
 };
 var { layout: layout4, title: title4, owner: owner4, status: status4, reviewed: reviewed4, signature } = metadata4;
 var root11 = from_html(
